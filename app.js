@@ -4,6 +4,7 @@ const app = express();
 const router = require("./routers");
 
 // initiate express
+app.disable("x-powered-by");
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(router);

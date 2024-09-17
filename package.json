@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest --runInBand --silent",
     "dev": "nodemon server.js",
-    "start": "node server.js"
+    "start": "DEBUG=express:* node server.js"
   },
   "jest": {
     "verbose": true
