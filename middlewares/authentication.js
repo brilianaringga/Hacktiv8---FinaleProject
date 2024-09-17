@@ -2,8 +2,21 @@ const { verifyToken } = require("../helpers/jwt");
 const { User } = require("../models");
 
 const authentication = (req, res, next) => {
+  const { authorization } = req.headers;
+
   try {
-    const token = req.get("token");
+    // const token = req.get("token");
+
+    if (!authorization) {
+      throw new Error("Authorization Error");
+    }
+
+    const [type, token] = authorization.split(" ");
+
+    if (!token) {
+      throw new Error("Token Not Found");
+    }
+
     const userDecoded = verifyToken(token);
 
     User.findOne({
@@ -27,7 +40,10 @@ const authentication = (req, res, next) => {
         return res.status(401).json(err);
       });
   } catch (err) {
-    return res.status(401).json(err);
+    return res.status(401).json({
+      name: "Unauthorized",
+      devMessage: err.message,
+    });
   }
 };
 

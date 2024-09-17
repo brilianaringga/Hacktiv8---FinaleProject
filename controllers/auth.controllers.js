@@ -1,6 +1,6 @@
 const { where } = require("sequelize");
 const { hashPassword, comparePassword } = require("../helpers/bcrypt");
-const { Users } = require("../models");
+const { User } = require("../models");
 const { generateToken } = require("../helpers/jwt");
 
 const register = async (req, res, next) => {
@@ -8,7 +8,7 @@ const register = async (req, res, next) => {
     req.body;
 
   try {
-    const user = await Users.create({
+    const user = await User.create({
       name,
       username,
       email,
@@ -28,7 +28,7 @@ const login = async (req, res, next) => {
   const { email, password } = req.body;
 
   try {
-    const user = await Users.findOne({
+    const user = await User.findOne({
       where: { email },
     });
 

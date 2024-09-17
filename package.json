@@ -4,15 +4,20 @@
   "description": "Trainig SoftDev Backend, Brilian Aringga - Assignment 2",
   "main": "apps.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon app.js",
-    "start": "node app.js"
+    "test": "jest --runInBand --silent",
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "jest": {
+    "verbose": true
   },
   "author": "Brilian Aringga P",
   "license": "ISC",
   "devDependencies": {
+    "jest": "^29.7.0",
     "nodemon": "^3.1.4",
-    "sequelize-cli": "^6.6.2"
+    "sequelize-cli": "^6.6.2",
+    "supertest": "^7.0.0"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
