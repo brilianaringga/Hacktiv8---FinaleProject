@@ -20,6 +20,11 @@ jobs:
           - 5433:5432
         env:
           POSTGRES_PASSWORD: postgres
+          DB_HOST: localhost
+          DB_PORT: 5432
+          DB_NAME: db_finaleproject
+          DB_USER: postgres
+          DB_PASS: mysecretpassword
 
     strategy:
       matrix:
