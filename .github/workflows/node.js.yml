@@ -46,5 +46,7 @@ jobs:
         run: npx sequelize db:create --env test
       - name: Migration
         run: npx sequelize db:migrate --env test
+      - name: Seed Movies Data
+        run: sequelize db:seed --seed 20240823143631-seeding_movie_datas.js
       - name: Testing
         run: npm test
